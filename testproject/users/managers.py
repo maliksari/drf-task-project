@@ -8,7 +8,7 @@ class CustomUserManager(BaseUserManager):
         if not email:
             raise ValueError(gettext_lazy('E-posta gereklidir'))
         email = self.normalize_email(email)
-        user = self.model(email=email, **extra_field)
+        user = self.model(email=email, password=password, **extra_field)
         user.set_password(password)
         user.save()
         return user
